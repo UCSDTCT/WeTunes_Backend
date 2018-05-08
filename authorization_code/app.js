@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var client_id = '6a2f92555e304d5f83673df87483dfd5'; // Your client id
 var client_secret = 'f64e47c80dab49feac4fa53493fa75d5'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
@@ -90,6 +89,19 @@ app.get('/callback', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
+        });
+
+        var song = {
+          url: 'https://api.spotify.com/v1/search?q=1000%20Forms%20Of%20Fear&type=track%2Cartist&market=US&limit=10&offset=5',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+
+        request.get(song, function(error, response, body){
+          var tracks = body.tracks.items;
+          tracks.forEach(function(track, index) {
+            console.log(index + ': ' + track.name + ' (' + track.id + ')');
+          })
         });
 
         // we can also pass the token to the browser to make requests from there
