@@ -1,0 +1,22 @@
+//{
+//	"db": {
+//		"username": "testuser",
+//		"password": "testuser",
+//		"host": "ds163689.mlab.com",
+//		"port": "63689",
+//		"name": "chatroomtest"
+//	}
+//}
+
+
+{
+    "_id": "wetunes.hrhsu",
+    "user": "hrhsu",
+    "db": "wetunes",
+    "roles": [
+        {
+            "role": "dbOwner",
+            "db": "wetunes"
+        }
+    ]
+}
